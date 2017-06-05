@@ -1,0 +1,105 @@
+# configure exec: ./configure 
+# On Sun Jun  4 20:49:30 BST 2017
+DBG: ccenv: WITH_CC:  --version failed: mklove/modules/configure.base: line 1184: --version: command not found
+DBG: Check ccenv (WITH_CC, action cont (originally cont)) failed: command ' --version' failed:
+mklove/modules/configure.base: line 1184: --version: command not found
+DBG: cxxenv: WITH_CXX:  --version failed: mklove/modules/configure.base: line 1184: --version: command not found
+DBG: Check cxxenv (WITH_CXX, action cont (originally cont)) failed: command ' --version' failed:
+mklove/modules/configure.base: line 1184: --version: command not found
+DBG: Compile check cc_g_dwarf (): gcc   -Wall -Werror _mkltmpvfI9nI.c -o _mkltmpvfI9nI.c.o   -gstrict-dwarf
+DBG: pkgconfig: WITH_PKGCONFIG: pkg-config --version failed: mklove/modules/configure.base: line 1184: pkg-config: command not found
+DBG: Check pkgconfig (WITH_PKGCONFIG, action cont (originally cont)) failed: command 'pkg-config --version' failed:
+mklove/modules/configure.base: line 1184: pkg-config: command not found
+DBG: install: WITH_INSTALL: install --version failed: install: illegal option -- -
+usage: install [-bCcpSsv] [-B suffix] [-f flags] [-g group] [-m mode]
+               [-o owner] file1 file2
+       install [-bCcpSsv] [-B suffix] [-f flags] [-g group] [-m mode]
+               [-o owner] file1 ... fileN directory
+       install -d [-v] [-g group] [-m mode] [-o owner] directory ...
+DBG: Check install (WITH_INSTALL, action cont (originally cont)) failed: command 'install --version' failed:
+install: illegal option -- -
+usage: install [-bCcpSsv] [-B suffix] [-f flags] [-g group] [-m mode]
+               [-o owner] file1 file2
+       install [-bCcpSsv] [-B suffix] [-f flags] [-g group] [-m mode]
+               [-o owner] file1 ... fileN directory
+       install -d [-v] [-g group] [-m mode] [-o owner] directory ...
+DBG: Compile check PIC (HAVE_PIC): gcc  -gstrict-dwarf -O2 -Wall -Werror _mkltmpYdmAAS.c -o _mkltmpYdmAAS.c.o   -fPIC
+DBG: Compile check gnulib (WITH_GNULD): gcc  -gstrict-dwarf -O2 -fPIC -Wall -Werror _mkltmpPQdDbt.c -o _mkltmpPQdDbt.c.o   -shared -Wl,-soname,mkltest.0
+DBG: compile check for gnulib (WITH_GNULD) failed: gcc  -gstrict-dwarf -O2 -fPIC -Wall -Werror _mkltmpPQdDbt.c -o _mkltmpPQdDbt.c.o   -shared -Wl,-soname,mkltest.0: ld: unknown option: -soname
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+DBG: Check gnulib (WITH_GNULD, action cont (originally cont)) failed: compile check failed:
+CC: CC
+flags: -shared -Wl,-soname,mkltest.0
+gcc  -gstrict-dwarf -O2 -fPIC -Wall -Werror _mkltmpPQdDbt.c -o _mkltmpPQdDbt.c.o   -shared -Wl,-soname,mkltest.0:
+ld: unknown option: -soname
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+source: 
+DBG: Compile check osxlib (WITH_OSXLD): gcc  -gstrict-dwarf -O2 -fPIC -Wall -Werror _mkltmpEB3UjI.c -o _mkltmpEB3UjI.c.o   -dynamiclib -Wl,-install_name,/tmp/mkltest.so.0
+DBG: Compile check ldsflagvs (): gcc  -gstrict-dwarf -O2 -fPIC -Wall -Werror _mkltmppKq7xq.c -o _mkltmppKq7xq.c.o   -shared -Wl,--version-script=_mkltmpVZByhT
+DBG: compile check for ldsflagvs () failed: gcc  -gstrict-dwarf -O2 -fPIC -Wall -Werror _mkltmppKq7xq.c -o _mkltmppKq7xq.c.o   -shared -Wl,--version-script=_mkltmpVZByhT: ld: unknown option: --version-script=_mkltmpVZByhT
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+DBG: Check ldsflagvs (, action cont (originally cont)) failed: compile check failed:
+CC: CC
+flags: -shared -Wl,--version-script=_mkltmpVZByhT
+gcc  -gstrict-dwarf -O2 -fPIC -Wall -Werror _mkltmppKq7xq.c -o _mkltmppKq7xq.c.o   -shared -Wl,--version-script=_mkltmpVZByhT:
+ld: unknown option: --version-script=_mkltmpVZByhT
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+source: 
+DBG: Compile check ldsflagm (): gcc  -gstrict-dwarf -O2 -fPIC -Wall -Werror _mkltmpE2dwtn.c -o _mkltmpE2dwtn.c.o   -shared -Wl,-M_mkltmpVZByhT
+DBG: compile check for ldsflagm () failed: gcc  -gstrict-dwarf -O2 -fPIC -Wall -Werror _mkltmpE2dwtn.c -o _mkltmpE2dwtn.c.o   -shared -Wl,-M_mkltmpVZByhT: ld: unknown option: -M_mkltmpVZByhT
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+DBG: Check ldsflagm (, action ignore (originally ignore)) failed: compile check failed:
+CC: CC
+flags: -shared -Wl,-M_mkltmpVZByhT
+gcc  -gstrict-dwarf -O2 -fPIC -Wall -Werror _mkltmpE2dwtn.c -o _mkltmpE2dwtn.c.o   -shared -Wl,-M_mkltmpVZByhT:
+ld: unknown option: -M_mkltmpVZByhT
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+source: 
+DBG: Compile check __atomic_32 (HAVE_ATOMICS_32): gcc  -gstrict-dwarf -O2 -fPIC -Wall -Werror _mkltmpqRwOvB.c -o _mkltmpqRwOvB.c.o   
+DBG: Compile check __atomic_64 (HAVE_ATOMICS_64): gcc  -gstrict-dwarf -O2 -fPIC -Wall -Werror _mkltmpoF9p5K.c -o _mkltmpoF9p5K.c.o   
+DBG: Compile check socket (): gcc  -gstrict-dwarf -O2 -fPIC -Wall -Wsign-compare -Wfloat-equal -Wpointer-arith -Wcast-align -Wall -Werror _mkltmpneXoos.c -o _mkltmpneXoos.c.o   
+DBG: Compile check libpthread (): gcc  -gstrict-dwarf -O2 -fPIC -Wall -Wsign-compare -Wfloat-equal -Wpointer-arith -Wcast-align -Wall -Werror _mkltmpPeKVmK.c -o _mkltmpPeKVmK.c.o   -lpthread
+DBG: Compile check zlib (WITH_ZLIB): gcc  -gstrict-dwarf -O2 -fPIC -Wall -Wsign-compare -Wfloat-equal -Wpointer-arith -Wcast-align -Wall -Werror _mkltmpvdbUEW.c -o _mkltmpvdbUEW.c.o   -lz
+DBG: Compile check libcrypto (): gcc  -gstrict-dwarf -O2 -fPIC -Wall -Wsign-compare -Wfloat-equal -Wpointer-arith -Wcast-align -Wall -Werror _mkltmpUiQgmy.c -o _mkltmpUiQgmy.c.o   -lcrypto
+DBG: Compile check liblz4 (WITH_LZ4_EXT): gcc  -gstrict-dwarf -O2 -fPIC -Wall -Wsign-compare -Wfloat-equal -Wpointer-arith -Wcast-align -Wall -Werror _mkltmpczhzYG.c -o _mkltmpczhzYG.c.o   -llz4
+DBG: compile check for liblz4 (WITH_LZ4_EXT) failed: gcc  -gstrict-dwarf -O2 -fPIC -Wall -Wsign-compare -Wfloat-equal -Wpointer-arith -Wcast-align -Wall -Werror _mkltmpczhzYG.c -o _mkltmpczhzYG.c.o   -llz4: _mkltmpczhzYG.c:1:10: fatal error: 'lz4frame.h' file not found
+#include <lz4frame.h>
+         ^
+1 error generated.
+DBG: Check liblz4 (WITH_LZ4_EXT, action disable (originally disable)) failed: compile check failed:
+CC: CC
+flags: -llz4
+gcc  -gstrict-dwarf -O2 -fPIC -Wall -Wsign-compare -Wfloat-equal -Wpointer-arith -Wcast-align -Wall -Werror _mkltmpczhzYG.c -o _mkltmpczhzYG.c.o   -llz4:
+_mkltmpczhzYG.c:1:10: fatal error: 'lz4frame.h' file not found
+#include <lz4frame.h>
+         ^
+1 error generated.
+source: #include <lz4frame.h>
+DBG: Compile check libssl (WITH_SSL): gcc  -gstrict-dwarf -O2 -fPIC -Wall -Wsign-compare -Wfloat-equal -Wpointer-arith -Wcast-align -Wall -Werror _mkltmpPtDYBv.c -o _mkltmpPtDYBv.c.o   -lssl
+DBG: compile check for libssl (WITH_SSL) failed: gcc  -gstrict-dwarf -O2 -fPIC -Wall -Wsign-compare -Wfloat-equal -Wpointer-arith -Wcast-align -Wall -Werror _mkltmpPtDYBv.c -o _mkltmpPtDYBv.c.o   -lssl: _mkltmpPtDYBv.c:1:10: fatal error: 'openssl/ssl.h' file not found
+#include <openssl/ssl.h>
+         ^
+1 error generated.
+DBG: Check libssl (WITH_SSL, action disable (originally disable)) failed: compile check failed:
+CC: CC
+flags: -lssl
+gcc  -gstrict-dwarf -O2 -fPIC -Wall -Wsign-compare -Wfloat-equal -Wpointer-arith -Wcast-align -Wall -Werror _mkltmpPtDYBv.c -o _mkltmpPtDYBv.c.o   -lssl:
+_mkltmpPtDYBv.c:1:10: fatal error: 'openssl/ssl.h' file not found
+#include <openssl/ssl.h>
+         ^
+1 error generated.
+source: #include <openssl/ssl.h>
+DBG: Compile check libsasl2 (WITH_SASL_CYRUS): gcc  -gstrict-dwarf -O2 -fPIC -Wall -Wsign-compare -Wfloat-equal -Wpointer-arith -Wcast-align -Wall -Werror _mkltmp6vPLvU.c -o _mkltmp6vPLvU.c.o   -lsasl2
+DBG: Compile check regex (HAVE_REGEX): gcc  -gstrict-dwarf -O2 -fPIC -Wall -Wsign-compare -Wfloat-equal -Wpointer-arith -Wcast-align -Wall -Werror _mkltmpzUfHWc.c -o _mkltmpzUfHWc.c.o   
+DBG: Compile check librt (): gcc  -gstrict-dwarf -O2 -fPIC -Wall -Wsign-compare -Wfloat-equal -Wpointer-arith -Wcast-align -Wall -Werror _mkltmp9P0I2U.c -o _mkltmp9P0I2U.c.o   -lrt
+DBG: compile check for librt () failed: gcc  -gstrict-dwarf -O2 -fPIC -Wall -Wsign-compare -Wfloat-equal -Wpointer-arith -Wcast-align -Wall -Werror _mkltmp9P0I2U.c -o _mkltmp9P0I2U.c.o   -lrt: ld: library not found for -lrt
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+DBG: Check librt (, action cont (originally cont)) failed: compile check failed:
+CC: CC
+flags: -lrt
+gcc  -gstrict-dwarf -O2 -fPIC -Wall -Wsign-compare -Wfloat-equal -Wpointer-arith -Wcast-align -Wall -Werror _mkltmp9P0I2U.c -o _mkltmp9P0I2U.c.o   -lrt:
+ld: library not found for -lrt
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+source: 
+DBG: Compile check strndup (HAVE_STRNDUP): gcc  -gstrict-dwarf -O2 -fPIC -Wall -Wsign-compare -Wfloat-equal -Wpointer-arith -Wcast-align -Wall -Werror _mkltmpzKf2ur.c -o _mkltmpzKf2ur.c.o   
+DBG: Compile check libdl (WITH_LIBDL): gcc  -gstrict-dwarf -O2 -fPIC -Wall -Wsign-compare -Wfloat-equal -Wpointer-arith -Wcast-align -Wall -Werror _mkltmpxhcQWP.c -o _mkltmpxhcQWP.c.o   -ldl
