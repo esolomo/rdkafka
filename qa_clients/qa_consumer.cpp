@@ -122,8 +122,6 @@ class Assignment {
 };
 
 
-
-
 static struct {
   int maxMessages;
 
@@ -587,7 +585,7 @@ int main (int argc, char **argv) {
   std::string errstr;
   std::vector<std::string> topics;
   std::string conf_file;
-  std::string mode = "P";
+  std::string mode = "C";
   int throughput = 0;
   int32_t partition = RdKafka::Topic::PARTITION_UA;
   bool do_conf_dump = false;
@@ -734,6 +732,7 @@ int main (int argc, char **argv) {
   /*
    * Set configuration properties
    */
+  
   conf->set("metadata.broker.list", brokers, errstr);
 
   ExampleEventCb ex_event_cb;
@@ -768,90 +767,7 @@ int main (int argc, char **argv) {
   signal(SIGTERM, sigterm);
   signal(SIGALRM,  sigwatchdog);
 
-
-  if (mode == "P") {
-    /*
-     * Producer mode
-     */
-
-    ExampleDeliveryReportCb ex_dr_cb;
-
-    /* Set delivery report callback */
-    conf->set("dr_cb", &ex_dr_cb, errstr);
-
-    /*
-     * Create producer using accumulated global configuration.
-     */
-    RdKafka::Producer *producer = RdKafka::Producer::create(conf, errstr);
-    if (!producer) {
-      std::cerr << now() << ": Failed to create producer: " << errstr << std::endl;
-      exit(1);
-    }
-
-    std::cerr << now() << ": % Created producer " << producer->name() << std::endl;
-
-    /*
-     * Create topic handle.
-     */
-    RdKafka::Topic *topic = RdKafka::Topic::create(producer, topics[0],
-                                                   tconf, errstr);
-    if (!topic) {
-      std::cerr << now() << ": Failed to create topic: " << errstr << std::endl;
-      exit(1);
-    }
-
-    static const int delay_us = throughput ? 1000000/throughput : 10;
-
-    if (state.maxMessages == -1)
-      state.maxMessages = 1000000; /* Avoid infinite produce */
-
-    for (int i = 0 ; run && i < state.maxMessages ; i++) {
-      /*
-       * Produce message
-       */
-      std::ostringstream msg;
-      msg << value_prefix << i;
-      while (true) {
-        RdKafka::ErrorCode resp =
-            producer->produce(topic, partition,
-                              RdKafka::Producer::RK_MSG_COPY /* Copy payload */,
-                              const_cast<char *>(msg.str().c_str()),
-                              msg.str().size(), NULL, NULL);
-        if (resp == RdKafka::ERR__QUEUE_FULL) {
-          producer->poll(100);
-          continue;
-        } else if (resp != RdKafka::ERR_NO_ERROR) {
-          errorString("producer_send_error",
-                      RdKafka::err2str(resp), topic->name(), NULL, msg.str());
-          state.producer.numErr++;
-        } else {
-          state.producer.numSent++;
-        }
-        break;
-      }
-
-      producer->poll(delay_us / 1000);
-      usleep(1000);
-      watchdog_kick();
-    }
-    run = true;
-
-    while (run && producer->outq_len() > 0) {
-      std::cerr << now() << ": Waiting for " << producer->outq_len() << std::endl;
-      producer->poll(1000);
-      watchdog_kick();
-    }
-
-    std::cerr << now() << ": " << state.producer.numAcked << "/" <<
-        state.producer.numSent << "/" << state.maxMessages <<
-        " msgs acked/sent/max, " << state.producer.numErr <<
-        " errored" << std::endl;
-
-    delete topic;
-    delete producer;
-
-
-  } else if (mode == "C") {
+if (mode == "C") {
     /*
      * Consumer mode
      */

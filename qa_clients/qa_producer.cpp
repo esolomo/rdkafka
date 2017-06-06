@@ -851,68 +851,6 @@ int main (int argc, char **argv) {
     delete producer;
 
 
-  } else if (mode == "C") {
-    /*
-     * Consumer mode
-     */
-
-    tconf->set("auto.offset.reset", "smallest", errstr);
-
-    /* Set default topic config */
-    conf->set("default_topic_conf", tconf, errstr);
-
-    ExampleRebalanceCb ex_rebalance_cb;
-    conf->set("rebalance_cb", &ex_rebalance_cb, errstr);
-
-    conf->set("offset_commit_cb", &ex_offset_commit_cb, errstr);
-
-
-    /*
-     * Create consumer using accumulated global configuration.
-     */
-    consumer = RdKafka::KafkaConsumer::create(conf, errstr);
-    if (!consumer) {
-      std::cerr << now() << ": Failed to create consumer: " <<
-          errstr << std::endl;
-      exit(1);
-    }
-
-    std::cerr << now() << ": % Created consumer " << consumer->name() <<
-        std::endl;
-
-    /*
-     * Subscribe to topic(s)
-     */
-    RdKafka::ErrorCode resp = consumer->subscribe(topics);
-    if (resp != RdKafka::ERR_NO_ERROR) {
-      std::cerr << now() << ": Failed to subscribe to " << topics.size() << " topics: "
-                << RdKafka::err2str(resp) << std::endl;
-      exit(1);
-    }
-
-    watchdog_kick();
-
-    /*
-     * Consume messages
-     */
-    while (run) {
-      RdKafka::Message *msg = consumer->consume(500);
-      msg_consume(consumer, msg, NULL);
-      delete msg;
-      watchdog_kick();
-    }
-
-    std::cerr << now() << ": Final commit on termination" << std::endl;
-
-    /* Final commit */
-    do_commit(consumer, 1);
-
-    /*
-     * Stop consumer
-     */
-    consumer->close();
-
-    delete consumer;
   }
 
   std::cout << "{ \"name\": \"shutdown_complete\" }" << std::endl;

@@ -37,5 +37,5 @@ qa_consumer: ../src-cpp/librdkafka++.a ../src/librdkafka.a qa_consumer.cpp
 
 
 clean:
-	rm -f $(QA_CLIENTS)
+	rm -rf $(QA_CLIENTS) ./*dSYM
 

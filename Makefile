@@ -47,6 +47,7 @@ clean:
 	@$(MAKE) -C tests $@
 	@$(MAKE) -C qa_clients $@
 	@(for d in $(LIBSUBDIRS); do $(MAKE) -C $$d $@ ; done)
+	rm -rf src/*.o
 
 distclean: clean
 	./configure --clean
